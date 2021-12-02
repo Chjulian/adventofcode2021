@@ -33,10 +33,6 @@ while(codons[3]<nrow(input)){
 };rm(x,y,codons,sonarSweep)
 
 #using diff() as above
-input <-input$V1 #create vector
-x<-input[1:c(length(input)-2)]
-y<-input[2:c(length(input)-1)]
-z<-input[3:length(input)]
-input<- x + y + z
-sum(diff(input) > 0)
+sum(diff(input$V1,3)>0)
+
 
