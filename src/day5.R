@@ -1,5 +1,5 @@
 #https://adventofcode.com/2021/day/5
-input<- read.csv("data/day5.txt", header = F)
+input<- read.csv("data/day5_test1.txt", header = F)
 #ugly code, is Sunday :P
 
 #part1
@@ -17,48 +17,58 @@ parser <- function(data=input){
 }
 input <- parser(input)
 
-
-#function to add +1 in a matrix
-# mapper <- function(m,x,y){
-#         m[y+1,x+1]<-m[y+1,x+1]+1
-#         return(m)
-# }
-
 #function to get points
-pointer<-function(x,y,z,w){
+pointer<-function(x1,y1,x2,y2){
         points<-integer()
-        for(i in x:z){
-                for(j in y:w){
+        for(i in x1:x2){
+                for(j in y1:y2){
                         points<-c(points, paste(i,j,sep=','))
                 }
         }
         return(points)
 }
 
-
-
 vents <- function(data=input){
-        # mygrid <- matrix(rep(0,(max(data)+1)*(max(data)+1)),max(data)+1,max(data)+1)
-        # row.names(mygrid)<- 0:max(data); colnames(mygrid)<- 0:max(data)
         all.points <- character()
         for(i in 1:nrow(data)){
                 #only consider vertical/horizontal lines
                 if(data[i,'V1']==data[i,'V3']|data[i,'V2']==data[i,'V4']){
                         points <- pointer(data[i,'V1'], data[i,'V2'],data[i,'V3'],data[i,'V4'])
                         all.points<- c(all.points, points)
-                        # for(j in points){
-                        #         mygrid <- mapper(mygrid, as.integer(strsplit(j,',')[[1]][1]),
-                        #                          as.integer(strsplit(j,',')[[1]][2])) 
-                        # }
                 }
                 
         }
         return(all.points)
-        # return(mygrid)
 } 
-# mygrid <- vents()
-# sum(mygrid==2)
-
 points <- vents()
 sum(table(points)>=2)
 
+
+##part2
+
+pointer2<-function(x1,y1,x2,y2){
+        xs <- x1:x2
+        ys <- y1:y2
+        return(paste(xs,ys,sep=","))
+}
+
+vents <- function(data=input){
+        all.points <- character()
+        for(i in 1:nrow(data)){
+                #consider vertical/horizontal lines and 45o diagonals
+                if(data[i,'V1']==data[i,'V3']|data[i,'V2']==data[i,'V4']){
+                        points <- pointer(data[i,'V1'], data[i,'V2'],data[i,'V3'],data[i,'V4'])
+                        all.points<- c(all.points, points)
+                } else { 
+                        if(length(data[i,'V1']:data[i,'V3'])==length(data[i,'V2']:data[i,'V4'])){
+                                points <- pointer2(data[i,'V1'], data[i,'V2'],data[i,'V3'],data[i,'V4'])
+                                all.points<- c(all.points, points)
+                        }
+                }
+                
+                
+        }
+        return(all.points)
+} 
+points <- vents()
+sum(table(points)>=2)
