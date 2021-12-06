@@ -1,5 +1,5 @@
 #https://adventofcode.com/2021/day/5
-input<- read.csv("data/day5_test1.txt", header = F)
+input<- read.csv("data/day5.txt", header = F)
 #ugly code, is Sunday :P
 
 #part1
