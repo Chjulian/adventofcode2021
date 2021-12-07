@@ -13,5 +13,3 @@ crabfuel2 <- function(x) {
         min(vapply(seq(min(x), max(x)), function(y) sum(sequence(abs(x-y))), numeric(1)))
 }
 
-
-
