@@ -32,7 +32,6 @@ input<-input[which(unlist(scores)==0)] #get incomplete lines
 
 scoring<- function(y){
         dictionary <- setNames(c(1,2,3,4),c(")","]","}",">"))
-        timer<-length(y)
         score=0
         for(pos in 1:length(y)){
                 score<-(score*5)+as.integer(dictionary[y[pos]])
