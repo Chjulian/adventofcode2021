@@ -4,7 +4,7 @@ input<- scan("data/day9.txt", what = 'character')
 input<- matrix(as.integer(unlist(strsplit(input,""))),nrow=length(input), byrow = T)
 
 #part1
-adjacentradar <- function(x,y,data=input){
+adjacentradar <- function(x,y,data=input){ #get value of any low point
         myvalues <- integer()
         N<-try(data[x,y-1], silent = TRUE)
         S<-try(data[x,y+1], silent = TRUE)
@@ -17,7 +17,7 @@ adjacentradar <- function(x,y,data=input){
         return(myvalues)
 }
 
-risklevels <- function(data=input){
+risklevels <- function(data=input){ #return scores as in the guidelines
         myvalues<-c()
         for(i in 1:nrow(input)){
                 for(j in 1:ncol(input)){
@@ -30,7 +30,7 @@ risklevels <- function(data=input){
 risklevels()
 
 #part2
-risklevels2 <- function(data=input){
+risklevels2 <- function(data=input){ #return matrix indexes of any low point
         myvalues<-c()
         for(i in 1:nrow(input)){
                 for(j in 1:ncol(input)){
@@ -44,7 +44,7 @@ coordinates<-risklevels2()
 
 vector.is.not.empty <- function(x) return(length(x) !=0 )
 
-adjacentradar2 <- function(x,y,data=input){
+adjacentradar2 <- function(x,y,data=input){ #return matrix indexes of locations != 9
         myvalues <- integer()
         N<-try(data[x,y-1], silent = TRUE)
         S<-try(data[x,y+1], silent = TRUE)
@@ -59,7 +59,7 @@ adjacentradar2 <- function(x,y,data=input){
 
 '%!in%' <- function(x, y) ! ('%in%'(x, y))
 
-basinsizes<- integer()
+basinsizes<- integer() #loop to check locations:
 for(coordinate in coordinates){
         tocheck <- coordinate
         checked <- character()
