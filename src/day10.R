@@ -27,7 +27,7 @@ inspector <-#return score for a vector of values
 scores <- lapply(input, inspector)
 sum(unlist(scores))
 
-#part1
+#part2
 input<-input[which(unlist(scores)==0)] #get incomplete lines
 
 scoring<- function(y){
