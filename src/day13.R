@@ -31,25 +31,27 @@ folder <- function(axis,value,data=input){
         return(list(mm,data))
 }
 
-# mm<-folder('y',7) #test data
 mm <- folder('x',655)
 sum(mm[[1]]==1)
 
 #part2
-#to be completed
-
-#and apply function across the element instructions
-mm<-folder('y',6, mm[[2]])
-
+#loop folder function
+mm<- list(0,input)
+i <- 1
+while(i!=nrow(instructions)+1){
+        mm<-folder(instructions$axis[i],instructions$value[i], mm[[2]])
+        i<-i+1
+}
 #save matrix
 write.table(mm[[1]], file="data/output_day13.txt", row.names=FALSE, col.names=FALSE)
 
-# 1  1  11   11    11 111  1111 1  1  11 
-# 1  1 1  1 1  1    1 1  1 1    1  1 1  1
-# 1111 1    1  1    1 111  111  1111 1   
-# 1  1 1 11 1111    1 1  1 1    1  1 1   
-# 1  1 1  1 1  1 1  1 1  1 1    1  1 1  1
-# 1  1  111 1  1  11  111  1111 1  1  11 
+# 1     1     1 1       1 1         1 1   1 1 1     1 1 1 1   1     1     1 1  
+# 1     1   1     1   1     1         1   1     1   1         1     1   1     1
+# 1 1 1 1   1         1     1         1   1 1 1     1 1 1     1 1 1 1   1      
+# 1     1   1   1 1   1 1 1 1         1   1     1   1         1     1   1      
+# 1     1   1     1   1     1   1     1   1     1   1         1     1   1     1
+# 1     1     1 1 1   1     1     1 1     1 1 1     1 1 1 1   1     1     1 1  
+
 
 
 
