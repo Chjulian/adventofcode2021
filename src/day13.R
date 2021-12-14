@@ -42,7 +42,7 @@ while(i!=nrow(instructions)+1){
         mm<-folder(instructions$axis[i],instructions$value[i], mm[[2]])
         i<-i+1
 }
-#save matrix
+#save matrix and check in text editor
 write.table(mm[[1]], file="data/output_day13.txt", row.names=FALSE, col.names=FALSE)
 
 # 1     1     1 1       1 1         1 1   1 1 1     1 1 1 1   1     1     1 1  
@@ -51,7 +51,3 @@ write.table(mm[[1]], file="data/output_day13.txt", row.names=FALSE, col.names=FA
 # 1     1   1   1 1   1 1 1 1         1   1     1   1         1     1   1      
 # 1     1   1     1   1     1   1     1   1     1   1         1     1   1     1
 # 1     1     1 1 1   1     1     1 1     1 1 1     1 1 1 1   1     1     1 1  
-
-
-
-
