@@ -1,5 +1,5 @@
 #https://adventofcode.com/2021/day/12
-input <- read.table("data/day12_test1.txt", sep = '-')
+input <- read.table("data/day12.txt", sep = '-')
 plot(igraph::graph_from_data_frame(input, directed = FALSE)) #just to visualize
 
 names(input) <- c('from','to')
