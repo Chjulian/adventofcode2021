@@ -60,10 +60,3 @@ ADDcaves2()
 #         allpaths<-allpaths[!duplicated(allpaths)]
 #         simplepaths <- allpaths
 # }
-
-
-
-
-
-
-
